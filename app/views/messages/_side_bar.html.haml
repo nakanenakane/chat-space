@@ -1,0 +1,17 @@
+.side_bar
+  .side_bar__header
+    .side_bar__header__items
+      .side_bar__header__items__name
+        masa
+      .side_bar__header__items__iconlist
+        = link_to "#", class: "icon_btn__edit" do
+          = icon('far', 'edit', class: "icon_btn")
+        = link_to "#", class: "icon_btn__cog" do
+          = icon('fas', 'cog', class: "icon_btn")
+
+  .side_bar__grouplist
+    .side_bar__grouplist__groups
+      .side_bar__grouplist__groups__group-name
+        techcamp
+      .side_bar__grouplist__groups__group-message
+        まだメッセージがありません
