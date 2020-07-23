@@ -2,11 +2,11 @@
   .side_bar__header
     .side_bar__header__items
       .side_bar__header__items__name
-        masa
+        = current_user.name
       .side_bar__header__items__iconlist
         = link_to "#", class: "icon_btn__edit" do
           = icon('far', 'edit', class: "icon_btn")
-        = link_to "#", class: "icon_btn__cog" do
+        = link_to edit_user_path(current_user) do
           = icon('fas', 'cog', class: "icon_btn")
 
   .side_bar__grouplist
