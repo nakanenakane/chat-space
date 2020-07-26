@@ -2,33 +2,21 @@
   .header
     .header__group
       .header__group__name
-        test
+        = @group.name
       .header__group__list
-        Member : masa
-    = link_to "#", class: "edit-btn" do
+        Member :
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path(@group.id) do
       Edit
   .message
-    .message__message-box
-      .message__message-box__message-info
-        .message__message-box__message-info__user-name
-          masa
-        .message__message-box__message-info__date
-          2019/11/20(Wed) 17:43:01
-      .message__message-box__message
-        おはよう!
-    .message__message-boxs
-      .message__message-boxs__message-info
-        .message__message-boxs__message-info__user-name
-          masa
-        .message__message-boxs__message-info__date
-          2019/11/20(Wed) 17:43:34
-      .message__message-box__message
-        今日は朝寝坊
+    = render partial: 'message', collection: @messages
+    
   .message-form
-    %form
+    = form_with model: [@group, @message], html: {class: "form"}, local: true do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "type a message"}
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type:"file", class: "input-box__image__file"}
-      %input{type: "submit", value: "Send", class: "submit-btn"}
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          = icon('far', 'image', class: 'input-box__icon')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Send', class: 'submit-btn'
